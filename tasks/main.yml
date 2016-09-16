@@ -1,0 +1,8 @@
+---
+- name: Install Type2Phone via Mac App Store
+  command: mas install "{{ item.id }}"
+  args:
+    creates: /Applications/{{ item.name }}.app
+  with_items:
+    - { id: 472717129, name: "Type2Phone" }
+  when: ansible_os_family == "Darwin"
